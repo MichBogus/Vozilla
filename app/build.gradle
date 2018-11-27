@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.vo.vozilla"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def appDependencies = rootProject.ext.appDependencies
+    def viewDependencies = rootProject.ext.viewDependencies
+    def diDependencies = rootProject.ext.diDependencies
+    def architectureComponents = rootProject.ext.architectureComponents
+    def testDependencies = rootProject.ext.testDependencies
+
+    implementation viewDependencies.supportCore
+    implementation viewDependencies.supportAppCompat
+    implementation viewDependencies.supportDesign
+    implementation viewDependencies.constraintLayout
+    implementation viewDependencies.recyclerView
+    implementation viewDependencies.glide
+    implementation viewDependencies.glideTransformation
+    implementation viewDependencies.fastAdapter
+    implementation viewDependencies.fastAdapterCommons
+
+    implementation appDependencies.multidex
+    implementation appDependencies.rxandroid
+    implementation appDependencies.rxjava
+    implementation appDependencies.rxkotlin
+    implementation appDependencies.joda
+    implementation appDependencies.firebaseAuth
+    implementation appDependencies.firebaseCore
+    implementation appDependencies.fireStore
+    implementation appDependencies.playServicesAuth
+
+    implementation architectureComponents.navigationFragment
+    implementation architectureComponents.navigationUi
+
+    implementation diDependencies.dagger
+    kapt diDependencies.daggerCompiler
+
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockito
+    testImplementation(testDependencies.mockitoKotlin) {
+        exclude module: 'org.mockito'
+    }
+    testImplementation testDependencies.assertJ
+    testImplementation(testDependencies.assertJAndroid) {
+        exclude group: 'com.android.support'
+    }
+    androidTestImplementation testDependencies.espresso
+}
