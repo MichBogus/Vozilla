@@ -22,6 +22,8 @@ ext {
     firebase_core_version = '16.0.0'
     fastadapter_version = "3.2.7"
     nav_version = "1.0.0-alpha05"
+    retrofit_version = '2.2.0'
+    ok_http_version = '3.6.0'
 
     appDependencies = [
             multidex                    : "com.android.support:multidex:$mutlidex_version",
@@ -50,7 +52,9 @@ ext {
             glide                       : "com.github.bumptech.glide:glide:$glide_version",
             glideTransformation         : "jp.wasabeef:glide-transformations:$glide_transformations_version",
             fastAdapter                 : "com.mikepenz:fastadapter:$fastadapter_version",
-            fastAdapterCommons          : "com.mikepenz:fastadapter-commons:$fastadapter_version"
+            fastAdapterCommons          : "com.mikepenz:fastadapter-commons:$fastadapter_version",
+            googleMapsUtils             : 'com.google.maps.android:android-maps-utils:0.5+',
+            googleMaps                  : "com.google.android.gms:play-services-maps:16.0.0"
     ]
 
     diDependencies = [
@@ -66,6 +70,13 @@ ext {
             assertJAndroid              : "org.assertj:assertj-core:$assertJ_android_version",
             espressoRunner              : 'com.android.support.test:runner:1.0.1',
             espresso                    : 'com.android.support.test.espresso:espresso-core:3.0.1'
+    ]
 
+    networkDependencies = [
+            retrofit                    : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitRx                  : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
+            gson                        : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            okhttp                      : "com.squareup.okhttp3:okhttp:$ok_http_version",
+            interceptor                 : "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
     ]
 }

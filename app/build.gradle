@@ -18,6 +18,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
 
@@ -29,6 +33,7 @@ dependencies {
     def diDependencies = rootProject.ext.diDependencies
     def architectureComponents = rootProject.ext.architectureComponents
     def testDependencies = rootProject.ext.testDependencies
+    def networkDependencies = rootProject.ext.networkDependencies
 
     implementation viewDependencies.supportCore
     implementation viewDependencies.supportAppCompat
@@ -39,6 +44,8 @@ dependencies {
     implementation viewDependencies.glideTransformation
     implementation viewDependencies.fastAdapter
     implementation viewDependencies.fastAdapterCommons
+    implementation viewDependencies.googleMapsUtils
+    implementation viewDependencies.googleMaps
 
     implementation appDependencies.multidex
     implementation appDependencies.rxandroid
@@ -49,6 +56,12 @@ dependencies {
     implementation appDependencies.firebaseCore
     implementation appDependencies.fireStore
     implementation appDependencies.playServicesAuth
+
+    implementation networkDependencies.retrofit
+    implementation networkDependencies.retrofitRx
+    implementation networkDependencies.gson
+    implementation networkDependencies.okhttp
+    implementation networkDependencies.interceptor
 
     implementation architectureComponents.navigationFragment
     implementation architectureComponents.navigationUi
