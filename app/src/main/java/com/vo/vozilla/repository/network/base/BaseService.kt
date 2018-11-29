@@ -1,11 +1,14 @@
 package com.vo.vozilla.repository.network.base
 
-import config.REST_URL
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.vo.vozilla.ktextensions.endsWithForwardSlash
+import config.REST_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 abstract class BaseService<T>(val client: OkHttpClient) {
 

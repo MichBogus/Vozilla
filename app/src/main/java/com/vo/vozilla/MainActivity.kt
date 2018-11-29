@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             polygons.add(polygon1)
 
             for (polygon in polygons) {
-                val strokeColor = 0x80F57F17
-                polygon.fillColor = strokeColor.toInt()
+                val strokeColor = polygon.strokeColor
+                polygon.fillColor = strokeColor
             }
 
             it.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-23.684, 133.903), 4f))

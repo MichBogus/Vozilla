@@ -59,6 +59,7 @@ dependencies {
 
     implementation networkDependencies.retrofit
     implementation networkDependencies.retrofitRx
+    implementation networkDependencies.gsonConverter
     implementation networkDependencies.gson
     implementation networkDependencies.okhttp
     implementation networkDependencies.interceptor

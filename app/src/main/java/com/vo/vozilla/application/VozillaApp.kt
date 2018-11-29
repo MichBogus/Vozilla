@@ -6,9 +6,7 @@ import com.vo.vozilla.application.maindi.MainComponent
 
 class VozillaApp : MultiDexApplication() {
 
-    companion object {
-        var mainComponent: MainComponent? = null
-    }
+    var mainComponent: MainComponent? = null
 
     override fun onCreate() {
         super.onCreate()
