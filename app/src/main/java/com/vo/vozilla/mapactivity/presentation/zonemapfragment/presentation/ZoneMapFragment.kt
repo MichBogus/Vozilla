@@ -52,7 +52,7 @@ class ZoneMapFragment : Fragment(), ZoneMapFragmentMVP.View, OnMapReadyCallback 
     override fun showZones(polygons: List<PolygonOptions>) {
         googleMap?.let { map ->
             polygons.forEach {
-                map.addPolygon(it)
+                val polygon = map.addPolygon(it)
             }
         }
     }

@@ -26,8 +26,8 @@ class ParkingMapFragmentPresenter
 
     override fun downloadParking() {
         interactor.getParking()
-                .observeOn(schedulerIO)
                 .observeOn(schedulerUI)
+                .subscribeOn(schedulerIO)
                 .subscribe({
                     view?.showParking(it)
                            }, {})
