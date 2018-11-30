@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.MarkerOptions
@@ -53,6 +54,10 @@ class ParkingMapFragment : Fragment(), ParkingMapFragmentMVP.View, OnMapReadyCal
         googleMap?.let { map ->
             parkingList.forEach {
                 map.addMarker(it)
+            }
+
+            parkingList.first().let {
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(it.position, 4f))
             }
         }
     }

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.PolygonOptions
@@ -52,7 +53,11 @@ class ZoneMapFragment : Fragment(), ZoneMapFragmentMVP.View, OnMapReadyCallback 
     override fun showZones(polygons: List<PolygonOptions>) {
         googleMap?.let { map ->
             polygons.forEach {
-                val polygon = map.addPolygon(it)
+                map.addPolygon(it)
+            }
+
+            polygons.first().let {
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(it.points.first(), 4f))
             }
         }
     }
