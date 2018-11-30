@@ -16,14 +16,12 @@ class ZoneToPolygonConverter {
             polygonList.addAll(zone.allowedAreas.map {
                 PolygonOptions()
                         .fillColor(allowedAreaColor)
-                        .clickable(true)
                         .addAll(it.points.map { LatLng(it.latitude, it.longitude) }.toList())
             }.toList())
 
             polygonList.addAll(zone.excludedAreas.map {
                 PolygonOptions()
                         .fillColor(excludedAreaColor)
-                        .clickable(true)
                         .addAll(it.points.map { LatLng(it.latitude, it.longitude) }.toList())
             }.toList())
         }

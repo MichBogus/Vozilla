@@ -15,7 +15,7 @@ data class Vehicle(@SerializedName("id") val id: String,
                    @SerializedName("rangeKm") val rangeKm: Long,
                    @SerializedName("batteryLevelPct") val batteryLevelPct: Int,
                    @SerializedName("reservationEnd") val reservationEnd: String,
-                   @SerializedName("status") val status: String,
+                   @SerializedName("status") val status: VehicleStatus,
                    @SerializedName("locationDescription") val locationDescription: String,
                    @SerializedName("address") val address: Address,
                    @SerializedName("mapColor") val mapColor: Color)
