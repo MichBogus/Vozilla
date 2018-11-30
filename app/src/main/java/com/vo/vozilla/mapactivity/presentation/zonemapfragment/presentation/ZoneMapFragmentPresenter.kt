@@ -1,31 +1,26 @@
-package com.vo.vozilla.mapactivity.presentation
+package com.vo.vozilla.mapactivity.presentation.zonemapfragment.presentation
 
 import com.vo.vozilla.application.maindi.modules.SchedulerModule.SchedulerIO
 import com.vo.vozilla.application.maindi.modules.SchedulerModule.SchedulerUI
-import com.vo.vozilla.mapactivity.domain.MapObjectsService
-import com.vo.vozilla.mapactivity.domain.ZoneToPolygonConverter
+import com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain.ZoneMapInteractor
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class MapActivityPresenter
-@Inject constructor(private val mapObjectsService: MapObjectsService,
+class ZoneMapFragmentPresenter
+@Inject constructor(private val interactor: ZoneMapInteractor,
                     @SchedulerIO private val schedulerIO: Scheduler,
-                    @SchedulerUI private val schedulerUI: Scheduler) : MapActivityMVP.Presenter {
+                    @SchedulerUI private val schedulerUI: Scheduler) : ZoneMapFragmentMVP.Presenter {
 
-    private var view: MapActivityMVP.View? = null
+    private var view: ZoneMapFragmentMVP.View? = null
     private val compositeDisposable = CompositeDisposable()
 
-    override fun attach(view: MapActivityMVP.View) {
+    override fun attach(view: ZoneMapFragmentMVP.View) {
         this.view = view
     }
 
     override fun downloadZones() {
-        mapObjectsService.getZones().observeOn(schedulerIO)
-                .toObservable()
-                .map {
-                    ZoneToPolygonConverter().convert(it)
-                }
+        interactor.getZonesAsPolygons()
                 .observeOn(schedulerUI)
                 .subscribeOn(schedulerIO)
                 .subscribe({

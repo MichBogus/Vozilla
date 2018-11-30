@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/all_map"
+        android:icon="@drawable/ic_globe"
+        android:title="@string/all_map_name"/>
+
+    <item
+        android:id="@+id/zone_map"
+        android:icon="@drawable/ic_zone"
+        android:title="@string/zone_map_name"/>
+
+    <item
+        android:id="@+id/parking_map"
+        android:icon="@drawable/ic_parking"
+        android:title="@string/parking_map_name"/>
+
+    <item
+        android:id="@+id/vehicle_map"
+        android:icon="@drawable/ic_vehicle"
+        android:title="@string/vehicle_map_name"/>
+</menu>

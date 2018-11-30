@@ -11,6 +11,8 @@ class VozillaApp : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        mainComponent = DaggerMainComponent.builder().build()
+        mainComponent = DaggerMainComponent.builder()
+                .bindContext(this)
+                .build()
     }
 }

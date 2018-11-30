@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Vozilla</string>
+
+    <string name="all_map_name">All</string>
+    <string name="zone_map_name">Zones</string>
+    <string name="parking_map_name">Parking</string>
+    <string name="vehicle_map_name">Vehicles</string>
 </resources>

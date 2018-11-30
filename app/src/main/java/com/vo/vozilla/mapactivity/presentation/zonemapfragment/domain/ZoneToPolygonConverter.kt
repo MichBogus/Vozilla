@@ -1,4 +1,4 @@
-package com.vo.vozilla.mapactivity.domain
+package com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions

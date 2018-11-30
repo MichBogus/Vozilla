@@ -1,12 +1,12 @@
-package com.vo.vozilla.mapactivity.presentation
+package com.vo.vozilla.mapactivity.presentation.zonemapfragment.presentation
 
 import com.google.android.gms.maps.model.PolygonOptions
 
-interface MapActivityMVP {
+interface ZoneMapFragmentMVP {
 
     interface Presenter {
 
-        fun attach(view: View)
+        fun attach(view: ZoneMapFragmentMVP.View)
         fun detach()
         fun downloadZones()
     }
