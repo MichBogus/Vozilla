@@ -22,8 +22,7 @@ class VehicleToMarkerConverterImpl
             val iconBitmap = iconGenerator.makeIcon()
 
             markersList.add(MarkerOptions().position(LatLng(it.location.latitude, it.location.longitude))
-                                    .icon(BitmapDescriptorFactory.fromBitmap(iconBitmap))
-            )
+                                    .icon(BitmapDescriptorFactory.fromBitmap(iconBitmap)))
         }
         return markersList
     }

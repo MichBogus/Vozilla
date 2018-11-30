@@ -31,5 +31,6 @@ class ZoneMapFragmentPresenter
 
     override fun detach() {
         compositeDisposable.clear()
+        view = null
     }
 }
