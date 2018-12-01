@@ -3,6 +3,7 @@ package com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
 import com.vo.vozilla.ktextensions.assertTwoPolygonOptionsListsEquals
+import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Location
 import com.vo.vozilla.repository.network.mapobjects.models.zone.Area
 import com.vo.vozilla.repository.network.mapobjects.models.zone.Zone

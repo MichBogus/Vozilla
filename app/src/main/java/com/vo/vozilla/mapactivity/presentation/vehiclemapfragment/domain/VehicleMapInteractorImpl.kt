@@ -1,6 +1,7 @@
 package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain
 
 import com.google.android.gms.maps.model.MarkerOptions
+import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
 import io.reactivex.Single
 import javax.inject.Inject

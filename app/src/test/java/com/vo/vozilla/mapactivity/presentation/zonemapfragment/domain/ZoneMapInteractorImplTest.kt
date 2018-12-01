@@ -5,6 +5,7 @@ import com.google.android.gms.maps.model.PolygonOptions
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import com.vo.vozilla.ktextensions.assertTwoPolygonOptionsListsEquals
+import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Location
 import com.vo.vozilla.repository.network.mapobjects.models.ZonesMapObjectResponse
 import com.vo.vozilla.repository.network.mapobjects.models.zone.Area
@@ -16,7 +17,9 @@ import org.junit.Test
 class ZoneMapInteractorImplTest {
 
     private val serviceMock: ZoneMapObjectService = mock()
-    private val converterMock: ZoneToPolygonConverterImpl = ZoneToPolygonConverterImpl(0, 1)
+    private val converterMock: ZoneToPolygonConverterImpl = ZoneToPolygonConverterImpl(
+            0,
+            1)
 
     private val tested = ZoneMapInteractorImpl(serviceMock, converterMock)
 

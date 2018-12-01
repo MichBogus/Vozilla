@@ -1,4 +1,4 @@
-package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain
+package com.vo.vozilla.mapactivity.presentation.converters
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions

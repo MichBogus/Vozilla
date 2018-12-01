@@ -14,7 +14,7 @@ import com.google.maps.android.ui.IconGenerator
 import com.vo.vozilla.R
 import com.vo.vozilla.mapactivity.presentation.MapActivity
 import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
-import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingToMarkerConverter
+import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverter
 import kotlinx.android.synthetic.main.fragment_parking_map.*
 import javax.inject.Inject
 

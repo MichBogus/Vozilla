@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.ui.IconGenerator
 import com.vo.vozilla.R
 import com.vo.vozilla.mapactivity.presentation.MapActivity
-import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleToMarkerConverter
+import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
 import kotlinx.android.synthetic.main.fragment_vehicle_map.*
 import javax.inject.Inject

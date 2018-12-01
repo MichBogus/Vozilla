@@ -1,6 +1,7 @@
-package com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain
+package com.vo.vozilla.mapactivity.presentation.converters
 
 import com.google.android.gms.maps.model.MarkerOptions
+import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
 import com.vo.vozilla.repository.network.mapobjects.models.parking.Parking
 
 interface ParkingToMarkerConverter {

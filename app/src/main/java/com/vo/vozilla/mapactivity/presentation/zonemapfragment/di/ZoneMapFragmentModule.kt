@@ -3,8 +3,8 @@ package com.vo.vozilla.mapactivity.presentation.zonemapfragment.di
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain.ZoneMapInteractor
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain.ZoneMapInteractorImpl
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain.ZoneMapObjectService
-import com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain.ZoneToPolygonConverter
-import com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain.ZoneToPolygonConverterImpl
+import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverter
+import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverterImpl
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.presentation.ZoneMapFragmentMVP
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.presentation.ZoneMapFragmentPresenter
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.repository.ZoneMapObjectServiceImpl

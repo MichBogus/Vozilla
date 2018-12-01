@@ -5,6 +5,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import com.vo.vozilla.ktextensions.assertParkingTwoMarkerOptionsListsEquals
+import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Color
 import com.vo.vozilla.repository.network.mapobjects.models.Location
 import com.vo.vozilla.repository.network.mapobjects.models.ParkingMapObjectResponse

@@ -5,6 +5,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.vo.vozilla.R
 import com.vo.vozilla.ktextensions.assertTwoMarkerOptionsListsEquals
 import com.vo.vozilla.ktextensions.createData
+import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Color
 import com.vo.vozilla.repository.network.mapobjects.models.Location
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.Address

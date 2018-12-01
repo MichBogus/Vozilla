@@ -1,6 +1,7 @@
 package com.vo.vozilla.mapactivity.presentation.zonemapfragment.domain
 
 import com.google.android.gms.maps.model.PolygonOptions
+import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverter
 import io.reactivex.Single
 import javax.inject.Inject
 

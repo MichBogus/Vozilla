@@ -3,8 +3,8 @@ package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.di
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleMapInteractor
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleMapInteractorImpl
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleMapObjectService
-import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleToMarkerConverter
-import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleToMarkerConverterImpl
+import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
+import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverterImpl
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.presentation.VehicleMapFragmentMVP
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.presentation.VehicleMapFragmentPresenter
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.repository.VehicleMapObjectServiceImpl
