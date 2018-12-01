@@ -10,11 +10,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.vo.vozilla.R
 import com.vo.vozilla.mapactivity.presentation.MapActivity
 import kotlinx.android.synthetic.main.fragment_all_map.*
+import javax.inject.Inject
 
 class AllMapFragment : Fragment(), AllMapFragmentMVP.View, OnMapReadyCallback {
 
-//    @Inject
-//    lateinit var presenter: AllMapFragmentMVP.Presenter
+    @Inject
+    lateinit var presenter: AllMapFragmentMVP.Presenter
 
     private var googleMap: GoogleMap? = null
 
@@ -33,11 +34,11 @@ class AllMapFragment : Fragment(), AllMapFragmentMVP.View, OnMapReadyCallback {
 
     override fun onStart() {
         super.onStart()
-//        presenter.attach(this)
+        presenter.attach(this)
     }
 
     override fun onStop() {
-//        presenter.detach()
+        presenter.detach()
         super.onStop()
     }
 
