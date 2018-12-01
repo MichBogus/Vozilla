@@ -1,6 +1,5 @@
 package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain
 
-import android.content.Context
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.nhaarman.mockito_kotlin.mock

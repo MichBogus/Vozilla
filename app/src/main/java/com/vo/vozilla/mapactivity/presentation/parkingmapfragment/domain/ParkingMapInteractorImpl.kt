@@ -8,6 +8,6 @@ class ParkingMapInteractorImpl
 @Inject constructor(private val service: ParkingMapObjectService,
                     private val converter: ParkingToMarkerConverter) : ParkingMapInteractor {
 
-    override fun getParking(): Single<List<MarkerOptions>> =
+    override fun getParking(): Single<List<Pair<ParkingSpace, MarkerOptions>>> =
             service.getParking().map { it.parkings }.map { converter.convert(it) }
 }

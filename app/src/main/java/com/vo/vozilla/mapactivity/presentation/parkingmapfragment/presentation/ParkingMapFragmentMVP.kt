@@ -1,6 +1,7 @@
 package com.vo.vozilla.mapactivity.presentation.parkingmapfragment.presentation
 
 import com.google.android.gms.maps.model.MarkerOptions
+import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
 
 interface ParkingMapFragmentMVP {
 
@@ -12,6 +13,6 @@ interface ParkingMapFragmentMVP {
     }
 
     interface View {
-        fun showParking(parkingList: List<MarkerOptions>)
+        fun showParking(parkingList: List<Pair<ParkingSpace, MarkerOptions>>)
     }
 }

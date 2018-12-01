@@ -5,5 +5,5 @@ import io.reactivex.Single
 
 interface ParkingMapInteractor {
 
-    fun getParking(): Single<List<MarkerOptions>>
+    fun getParking(): Single<List<Pair<ParkingSpace, MarkerOptions>>>
 }

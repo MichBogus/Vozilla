@@ -5,5 +5,7 @@ import com.vo.vozilla.repository.network.mapobjects.models.parking.Parking
 
 interface ParkingToMarkerConverter {
 
-    fun convert(parking: List<Parking>): List<MarkerOptions>
+    fun convert(parking: List<Parking>): List<Pair<ParkingSpace, MarkerOptions>>
+
+    fun getPinBackgroundByParkingSpace(space: ParkingSpace): Int
 }
