@@ -1,4 +1,4 @@
-package com.vo.vozilla.mapactivity.presentation.zonemapfragment.di
+package com.vo.vozilla.mapactivity.di
 
 import android.graphics.Color
 import dagger.Module

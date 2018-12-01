@@ -2,8 +2,8 @@ package com.vo.vozilla.mapactivity.presentation.converters
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
-import com.vo.vozilla.mapactivity.presentation.zonemapfragment.di.ZoneMapConverterColorModule.AllowedColor
-import com.vo.vozilla.mapactivity.presentation.zonemapfragment.di.ZoneMapConverterColorModule.ExcludedColor
+import com.vo.vozilla.mapactivity.di.ZoneMapConverterColorModule.AllowedColor
+import com.vo.vozilla.mapactivity.di.ZoneMapConverterColorModule.ExcludedColor
 import com.vo.vozilla.repository.network.mapobjects.models.zone.Zone
 import javax.inject.Inject
 

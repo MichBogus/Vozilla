@@ -7,7 +7,7 @@ import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.di.VehicleMapF
 import com.vo.vozilla.mapactivity.presentation.zonemapfragment.di.ZoneMapFragmentComponent
 import dagger.Subcomponent
 
-@Subcomponent
+@Subcomponent(modules = [ZoneMapConverterColorModule::class])
 interface MapActivityComponent {
 
     fun inject(activity: MapActivity)
