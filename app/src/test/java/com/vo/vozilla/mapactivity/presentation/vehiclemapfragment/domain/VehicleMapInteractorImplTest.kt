@@ -4,9 +4,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import com.vo.vozilla.ktextensions.assertTwoMarkerOptionsListsEquals
+import com.vo.vozilla.ktextensions.assertVehicleFiltersEquals
+import com.vo.vozilla.ktextensions.assertVehicleListsEquals
 import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverterImpl
+import com.vo.vozilla.repository.network.filter.models.Filters
+import com.vo.vozilla.repository.network.filter.models.FiltersResponse
 import com.vo.vozilla.repository.network.mapobjects.models.Color
 import com.vo.vozilla.repository.network.mapobjects.models.Location
 import com.vo.vozilla.repository.network.mapobjects.models.VehiclesMapObjectResponse
@@ -21,9 +24,10 @@ import org.junit.Test
 class VehicleMapInteractorImplTest {
 
     private val serviceMock: VehicleMapObjectService = mock()
+    private val filtersServiceMock: FiltersService = mock()
     private val converterMock = VehicleToMarkerConverterImpl()
 
-    private val tested = VehicleMapInteractorImpl(serviceMock, converterMock)
+    private val tested = VehicleMapInteractorImpl(serviceMock, filtersServiceMock, converterMock)
 
     @Test
     fun shouldMapVehiclesResponseWithEmptyVehicles() {
@@ -33,7 +37,7 @@ class VehicleMapInteractorImplTest {
         val testObserver = tested.getVehicles().test()
 
         Assertions.assertThat(testObserver.assertNoErrors().values().flatten()).isEmpty()
-        assertTwoMarkerOptionsListsEquals(testObserver.values().flatten(), expected)
+        assertVehicleListsEquals(testObserver.values().flatten(), expected)
     }
 
     @Test
@@ -51,7 +55,7 @@ class VehicleMapInteractorImplTest {
 
         val testObserver = tested.getVehicles().test()
 
-        assertTwoMarkerOptionsListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
+        assertVehicleListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
     }
 
     private fun responseWithEmptyListOfVehicles() =
@@ -73,4 +77,19 @@ class VehicleMapInteractorImplTest {
                             VehicleStatus.AVAILABLE, "test-location",
                             Address("test-street", "test-housenumber", "test-city"),
                             Color("2222222", 2f))))
+
+    @Test
+    fun shouldReturnProperFilters() {
+        val expected = VehicleFilters(mapOf(Pair("test1", "test"), Pair("test2", "test")),
+                                      mapOf(Pair("test3", "test"), Pair("test4", "test")))
+        whenever(filtersServiceMock.getFilters()).thenReturn(Single.just(filtersResponse()))
+
+        val testObserver = tested.getFilters().test()
+
+        assertVehicleFiltersEquals(testObserver.assertNoErrors().values().first(), expected)
+    }
+
+    private fun filtersResponse() =
+            FiltersResponse(Filters(mapOf(Pair("test1", "test"), Pair("test2", "test")),
+                                    mapOf(Pair("test3", "test"), Pair("test4", "test"))))
 }

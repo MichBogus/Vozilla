@@ -7,8 +7,12 @@ import javax.inject.Inject
 
 class VehicleMapInteractorImpl
 @Inject constructor(private val service: VehicleMapObjectService,
+                    private val filtersService: FiltersService,
                     private val converter: VehicleToMarkerConverter) : VehicleMapInteractor {
 
     override fun getVehicles(): Single<List<VehicleDomainModel>> =
             service.getVehicles().map { it.vehicles }.map { converter.convert(it) }
+
+    override fun getFilters(): Single<VehicleFilters> =
+            filtersService.getFilters().map { VehicleFilters(it.filters.vehicleStatus, it.filters.vehicleModels) }
 }

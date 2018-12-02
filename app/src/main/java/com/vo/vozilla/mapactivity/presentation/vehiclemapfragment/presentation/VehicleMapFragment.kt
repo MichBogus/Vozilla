@@ -3,6 +3,9 @@ package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.presentation
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,6 +23,7 @@ import com.vo.vozilla.mapactivity.presentation.vehicleinfodialog.VehicleInfoDial
 import kotlinx.android.synthetic.main.fragment_vehicle_map.*
 import javax.inject.Inject
 
+
 class VehicleMapFragment : Fragment(), VehicleMapFragmentMVP.View, OnMapReadyCallback, OnMarkerClickListener {
 
     @Inject
@@ -32,6 +36,11 @@ class VehicleMapFragment : Fragment(), VehicleMapFragmentMVP.View, OnMapReadyCal
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.fragment_vehicle_map, container, false)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -60,7 +69,22 @@ class VehicleMapFragment : Fragment(), VehicleMapFragmentMVP.View, OnMapReadyCal
         presenter.downloadVehicles()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater!!.inflate(R.menu.vehicle_filter_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_no_filters -> presenter.downloadVehicles()
+            R.id.menu_filter_by_model -> presenter.downloadVehicles()
+            R.id.menu_filter_by_type -> presenter.downloadVehicles()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun showVehicles(vehicleList: List<VehicleDomainModel>) {
+        googleMap?.clear()
         googleMap?.let { map ->
             vehicleList.forEach {
                 val iconGenerator = IconGenerator(context).apply {

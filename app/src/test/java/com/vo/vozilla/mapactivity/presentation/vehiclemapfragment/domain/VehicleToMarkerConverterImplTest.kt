@@ -3,7 +3,7 @@ package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.vo.vozilla.R
-import com.vo.vozilla.ktextensions.assertTwoMarkerOptionsListsEquals
+import com.vo.vozilla.ktextensions.assertVehicleListsEquals
 import com.vo.vozilla.ktextensions.createData
 import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverterImpl
@@ -28,7 +28,7 @@ class VehicleToMarkerConverterImplTest {
 
         val actual = tested.convert(emptyListOfVehicles())
 
-        assertTwoMarkerOptionsListsEquals(actual, expected)
+        assertVehicleListsEquals(actual, expected)
     }
 
     @Test
@@ -45,7 +45,7 @@ class VehicleToMarkerConverterImplTest {
 
         val actual = tested.convert(vehicles())
 
-        assertTwoMarkerOptionsListsEquals(actual, expected)
+        assertVehicleListsEquals(actual, expected)
     }
 
     private fun emptyListOfVehicles() =

@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import com.vo.vozilla.ktextensions.assertParkingTwoMarkerOptionsListsEquals
+import com.vo.vozilla.ktextensions.assertParkingListsEquals
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Color
@@ -31,7 +31,7 @@ class ParkingMapInteractorImplTest {
         val testObserver = tested.getParking().test()
 
         Assertions.assertThat(testObserver.assertNoErrors().values().flatten()).isEmpty()
-        assertParkingTwoMarkerOptionsListsEquals(testObserver.values().flatten(), expected)
+        assertParkingListsEquals(testObserver.values().flatten(), expected)
     }
 
     @Test
@@ -41,7 +41,7 @@ class ParkingMapInteractorImplTest {
 
         val testObserver = tested.getParking().test()
 
-        assertParkingTwoMarkerOptionsListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
+        assertParkingListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
     }
 
     private fun responseWithEmptyListOfParking() =

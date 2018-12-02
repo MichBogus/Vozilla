@@ -3,7 +3,7 @@ package com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.vo.vozilla.R
-import com.vo.vozilla.ktextensions.assertParkingTwoMarkerOptionsListsEquals
+import com.vo.vozilla.ktextensions.assertParkingListsEquals
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Color
@@ -23,7 +23,7 @@ class ParkingToMarkerConverterImplTest {
 
         val actual = tested.convert(emptyListOfParking())
 
-        assertParkingTwoMarkerOptionsListsEquals(actual, expected)
+        assertParkingListsEquals(actual, expected)
     }
 
     @Test
@@ -32,7 +32,7 @@ class ParkingToMarkerConverterImplTest {
 
         val actual = tested.convert(parking())
 
-        assertParkingTwoMarkerOptionsListsEquals(actual, expected)
+        assertParkingListsEquals(actual, expected)
     }
 
     @Test

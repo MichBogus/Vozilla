@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/sub_menu_last"
+        android:icon="@drawable/ic_filter"
+        android:orderInCategory="1"
+        android:title="@string/filter"
+        android:visible="true"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_no_filters"
+                android:title="@string/no_filters"/>
+            <item
+                android:id="@+id/menu_filter_by_model"
+                android:title="@string/filter_by_model"/>
+            <item
+                android:id="@+id/menu_filter_by_type"
+                android:title="@string/filter_by_type"/>
+        </menu>
+    </item>
+</menu>

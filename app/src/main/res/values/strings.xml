@@ -5,4 +5,8 @@
     <string name="zone_map_name">Zones</string>
     <string name="parking_map_name">Parking</string>
     <string name="vehicle_map_name">Vehicles</string>
+    <string name="filter">Filter</string>
+    <string name="no_filters">No filters</string>
+    <string name="filter_by_model">Filter by model</string>
+    <string name="filter_by_type">Filter by type</string>
 </resources>

@@ -2,6 +2,7 @@ package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.presentation
 
 import com.vo.vozilla.application.maindi.modules.SchedulerModule.SchedulerIO
 import com.vo.vozilla.application.maindi.modules.SchedulerModule.SchedulerUI
+import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleFilters
 import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain.VehicleMapInteractor
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -13,14 +14,28 @@ class VehicleMapFragmentPresenter
                     @SchedulerUI private val schedulerUI: Scheduler) : VehicleMapFragmentMVP.Presenter {
 
     private var view: VehicleMapFragmentMVP.View? = null
+    private var filters: VehicleFilters? = null
     private val compositeDisposable = CompositeDisposable()
 
     override fun attach(view: VehicleMapFragmentMVP.View) {
         this.view = view
+
+        downloadFilters()
+    }
+
+    private fun downloadFilters() {
+        interactor.getFilters()
+                .observeOn(schedulerUI)
+                .subscribeOn(schedulerIO)
+                .subscribe({
+                               filters = it
+                           }, { })
+                .apply { compositeDisposable.add(this) }
     }
 
     override fun detach() {
         compositeDisposable.clear()
+        filters = null
         view = null
     }
 

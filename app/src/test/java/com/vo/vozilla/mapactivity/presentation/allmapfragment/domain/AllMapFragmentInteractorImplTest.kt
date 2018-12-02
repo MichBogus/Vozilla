@@ -5,8 +5,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import com.vo.vozilla.ktextensions.assertParkingTwoMarkerOptionsListsEquals
-import com.vo.vozilla.ktextensions.assertTwoMarkerOptionsListsEquals
+import com.vo.vozilla.ktextensions.assertParkingListsEquals
+import com.vo.vozilla.ktextensions.assertVehicleListsEquals
 import com.vo.vozilla.ktextensions.assertTwoPolygonOptionsListsEquals
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
@@ -49,7 +49,7 @@ class AllMapFragmentInteractorImplTest {
         val testObserver = tested.getParking().test()
 
         Assertions.assertThat(testObserver.assertNoErrors().values().flatten()).isEmpty()
-        assertParkingTwoMarkerOptionsListsEquals(testObserver.values().flatten(), expected)
+        assertParkingListsEquals(testObserver.values().flatten(), expected)
     }
 
     @Test
@@ -59,7 +59,7 @@ class AllMapFragmentInteractorImplTest {
 
         val testObserver = tested.getParking().test()
 
-        assertParkingTwoMarkerOptionsListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
+        assertParkingListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
     }
 
     private fun responseWithEmptyListOfParking() =
@@ -84,7 +84,7 @@ class AllMapFragmentInteractorImplTest {
         val testObserver = tested.getVehicles().test()
 
         Assertions.assertThat(testObserver.assertNoErrors().values().flatten()).isEmpty()
-        assertTwoMarkerOptionsListsEquals(testObserver.values().flatten(), expected)
+        assertVehicleListsEquals(testObserver.values().flatten(), expected)
     }
 
     @Test
@@ -102,7 +102,7 @@ class AllMapFragmentInteractorImplTest {
 
         val testObserver = tested.getVehicles().test()
 
-        assertTwoMarkerOptionsListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
+        assertVehicleListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
     }
 
     private fun responseWithEmptyListOfVehicles() =
