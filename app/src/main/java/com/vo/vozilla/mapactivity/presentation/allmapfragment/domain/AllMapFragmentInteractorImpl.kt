@@ -6,7 +6,7 @@ import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConvert
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
 import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverter
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
-import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
+import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class AllMapFragmentInteractorImpl
     override fun getParking(): Single<List<Pair<ParkingSpace, MarkerOptions>>> =
             service.getParking().map { it.parkings }.map { parkingConverter.convert(it) }
 
-    override fun getVehicles(): Single<List<Pair<VehicleStatus, MarkerOptions>>> =
+    override fun getVehicles(): Single<List<VehicleDomainModel>> =
             service.getVehicles().map { it.vehicles }.map { vehicleConverter.convert(it) }
 
     override fun getZones(): Single<List<PolygonOptions>> =

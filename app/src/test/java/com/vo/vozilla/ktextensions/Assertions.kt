@@ -3,7 +3,7 @@ package com.vo.vozilla.ktextensions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
-import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
+import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import org.assertj.core.api.Assertions.assertThat
 
 fun assertTwoPolygonOptionsListsEquals(l1: List<PolygonOptions>, l2: List<PolygonOptions>) {
@@ -14,12 +14,13 @@ fun assertTwoPolygonOptionsListsEquals(l1: List<PolygonOptions>, l2: List<Polygo
     }
 }
 
-fun assertTwoMarkerOptionsListsEquals(l1: List<Pair<VehicleStatus, MarkerOptions>>,
-                                      l2: List<Pair<VehicleStatus, MarkerOptions>>) {
+fun assertTwoMarkerOptionsListsEquals(l1: List<VehicleDomainModel>,
+                                      l2: List<VehicleDomainModel>) {
     assertThat(l1).hasSize(l2.size)
     l1.forEachIndexed { index, markerOption ->
-        assertThat(markerOption.first).isEqualTo(l2[index].first)
-        assertThat(markerOption.second.position).isEqualTo(l2[index].second.position)
+        assertThat(markerOption.dataModel).isEqualTo(l2[index].dataModel)
+        assertThat(markerOption.vehicleStatus).isEqualTo(l2[index].vehicleStatus)
+        assertThat(markerOption.markerOption.position).isEqualTo(l2[index].markerOption.position)
     }
 }
 

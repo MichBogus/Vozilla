@@ -8,6 +8,7 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.whenever
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
+import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import com.vo.vozilla.mapactivity.presentation.allmapfragment.domain.AllMapFragmentInteractor
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
 import io.reactivex.Single
@@ -53,7 +54,9 @@ class AllMapFragmentPresenterTest {
     fun shouldShowParkingAndVehiclesWhenZonesEndpointHasError() {
         val expected = listOf(Pair(ParkingSpace(1, 2), MarkerOptions().position(LatLng(1.0, 1.0))))
         whenever(interactorMock.getParking()).thenReturn(Single.just(expected))
-        val vehicleExpected = listOf(Pair(VehicleStatus.AVAILABLE, MarkerOptions().position(LatLng(1.0, 1.0))))
+        val vehicleExpected = listOf(VehicleDomainModel(mutableMapOf(),
+                                                        VehicleStatus.AVAILABLE,
+                                                        MarkerOptions().position(LatLng(1.0, 1.0))))
         whenever(interactorMock.getVehicles()).thenReturn(Single.just(vehicleExpected))
         whenever(interactorMock.getZones()).thenReturn(Single.error(IllegalStateException()))
 
@@ -69,7 +72,9 @@ class AllMapFragmentPresenterTest {
     fun shouldShowFullMap() {
         val expected = listOf(Pair(ParkingSpace(1, 2), MarkerOptions().position(LatLng(1.0, 1.0))))
         whenever(interactorMock.getParking()).thenReturn(Single.just(expected))
-        val vehicleExpected = listOf(Pair(VehicleStatus.AVAILABLE, MarkerOptions().position(LatLng(1.0, 1.0))))
+        val vehicleExpected = listOf(VehicleDomainModel(mutableMapOf(),
+                                                        VehicleStatus.AVAILABLE,
+                                                        MarkerOptions().position(LatLng(1.0, 1.0))))
         whenever(interactorMock.getVehicles()).thenReturn(Single.just(vehicleExpected))
         val zonesExpected = listOf(PolygonOptions().add(LatLng(1.0, 1.0)))
         whenever(interactorMock.getZones()).thenReturn(Single.just(zonesExpected))

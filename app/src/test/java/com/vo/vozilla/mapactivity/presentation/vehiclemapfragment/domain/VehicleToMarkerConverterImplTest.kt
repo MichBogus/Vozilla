@@ -5,6 +5,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.vo.vozilla.R
 import com.vo.vozilla.ktextensions.assertTwoMarkerOptionsListsEquals
 import com.vo.vozilla.ktextensions.createData
+import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Color
 import com.vo.vozilla.repository.network.mapobjects.models.Location
@@ -23,7 +24,7 @@ class VehicleToMarkerConverterImplTest {
 
     @Test
     fun shouldMapVehiclesResponseWithEmptyVehicles() {
-        val expected = listOf<Pair<VehicleStatus, MarkerOptions>>()
+        val expected = listOf<VehicleDomainModel>()
 
         val actual = tested.convert(emptyListOfVehicles())
 
@@ -32,7 +33,15 @@ class VehicleToMarkerConverterImplTest {
 
     @Test
     fun shouldMapZonesResponseToPolygons() {
-        val expected = listOf(Pair(VehicleStatus.AVAILABLE, MarkerOptions().position(LatLng(1.0, 1.0))))
+        val expected = listOf(VehicleDomainModel(mutableMapOf<String, Any>().apply {
+            put(Vehicle.ID, "1")
+            put(Vehicle.NAME, "test-vehicle")
+            put(Vehicle.PLATES_NUMBER, "222")
+            put(Vehicle.SIDE_NUMBER, "223")
+            put(Vehicle.STATUS, VehicleStatus.AVAILABLE.toString())
+            put(Vehicle.LOCATION_DESCRIPTION, "test-location")
+            put(Vehicle.PICTURE_ID, "2")
+        }, VehicleStatus.AVAILABLE, MarkerOptions().position(LatLng(1.0, 1.0))))
 
         val actual = tested.convert(vehicles())
 

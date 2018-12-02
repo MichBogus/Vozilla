@@ -17,7 +17,7 @@ import com.vo.vozilla.mapactivity.presentation.MapActivity
 import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverter
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
 import com.vo.vozilla.mapactivity.domain.ParkingSpace
-import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
+import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import kotlinx.android.synthetic.main.fragment_all_map.*
 import javax.inject.Inject
 
@@ -75,19 +75,19 @@ class AllMapFragment : Fragment(), AllMapFragmentMVP.View, OnMapReadyCallback {
         }
     }
 
-    override fun showVehicles(vehicleList: List<Pair<VehicleStatus, MarkerOptions>>) {
+    override fun showVehicles(vehicles: List<VehicleDomainModel>) {
         googleMap?.let { map ->
-            vehicleList.forEach {
+            vehicles.forEach {
                 val iconGenerator = IconGenerator(context).apply {
-                    setBackground(context?.getDrawable(vehicleConverter.getMarkerDrawableByVehicleStatus(it.first)))
+                    setBackground(context?.getDrawable(vehicleConverter.getMarkerDrawableByVehicleStatus(it.vehicleStatus)))
                 }
                 val iconBitmap = iconGenerator.makeIcon()
-                it.second.icon(BitmapDescriptorFactory.fromBitmap(iconBitmap))
-                map.addMarker(it.second)
+                it.markerOption.icon(BitmapDescriptorFactory.fromBitmap(iconBitmap))
+                map.addMarker(it.markerOption)
             }
 
-            vehicleList.first().let {
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(it.second.position, 4f))
+            vehicles.first().let {
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(it.markerOption.position, 4f))
             }
         }
     }
