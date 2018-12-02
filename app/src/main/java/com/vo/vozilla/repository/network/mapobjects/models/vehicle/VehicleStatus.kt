@@ -13,5 +13,7 @@ enum class VehicleStatus {
     @SerializedName("RETURNED")
     RETURNED,
     @SerializedName("UNAVAILABLE")
-    UNAVAILABLE;
+    UNAVAILABLE,
+    @SerializedName("MAINTENANCE")
+    MAINTENANCE;
 }

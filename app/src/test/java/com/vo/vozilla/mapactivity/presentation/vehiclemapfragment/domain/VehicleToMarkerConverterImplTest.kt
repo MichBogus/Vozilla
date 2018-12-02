@@ -82,7 +82,8 @@ class VehicleToMarkerConverterImplTest {
                                     { arrayOf(R.drawable.ic_vehicle_reserved_mark, VehicleStatus.RESERVED) },
                                     { arrayOf(R.drawable.ic_vehicle_rented_mark, VehicleStatus.RENTED) },
                                     { arrayOf(R.drawable.ic_vehicle_returned_mark, VehicleStatus.RETURNED) },
-                                    { arrayOf(R.drawable.ic_vehicle_unavailable_mark, VehicleStatus.UNAVAILABLE) })
+                                    { arrayOf(R.drawable.ic_vehicle_unavailable_mark, VehicleStatus.UNAVAILABLE) },
+                                    { arrayOf(R.drawable.ic_vehicle_unavailable_mark, VehicleStatus.MAINTENANCE) })
         }
 
         @Test

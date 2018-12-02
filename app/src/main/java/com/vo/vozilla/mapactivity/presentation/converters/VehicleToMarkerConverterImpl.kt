@@ -24,9 +24,9 @@ class VehicleToMarkerConverterImpl
                 put(Vehicle.PICTURE_ID, it.picture.id)
             }
             markersList.add(VehicleDomainModel(dataModel,
-                                                                                 it.status,
-                                                                                 MarkerOptions().position(LatLng(it.location.latitude,
-                                                                                                                 it.location.longitude))))
+                                               it.status,
+                                               MarkerOptions().position(LatLng(it.location.latitude,
+                                                                               it.location.longitude))))
         }
         return markersList
     }
@@ -37,6 +37,6 @@ class VehicleToMarkerConverterImpl
                 VehicleStatus.RESERVED -> R.drawable.ic_vehicle_reserved_mark
                 VehicleStatus.RENTED -> R.drawable.ic_vehicle_rented_mark
                 VehicleStatus.RETURNED -> R.drawable.ic_vehicle_returned_mark
-                VehicleStatus.UNAVAILABLE -> R.drawable.ic_vehicle_unavailable_mark
+                VehicleStatus.UNAVAILABLE, VehicleStatus.MAINTENANCE -> R.drawable.ic_vehicle_unavailable_mark
             }
 }
