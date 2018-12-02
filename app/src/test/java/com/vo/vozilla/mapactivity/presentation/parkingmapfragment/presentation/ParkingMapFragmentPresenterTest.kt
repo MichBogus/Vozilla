@@ -3,6 +3,7 @@ package com.vo.vozilla.mapactivity.presentation.parkingmapfragment.presentation
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.whenever
@@ -43,6 +44,18 @@ class ParkingMapFragmentPresenterTest {
         tested.downloadParking()
 
         verify(viewMock).showParking(expected)
+        verifyNoMoreInteractions(viewMock)
+    }
+
+    @Test
+    fun shouldNotShowProperMarkerOptionsOnViewWhenListIsEmpty() {
+        val expected = listOf<Pair<ParkingSpace, MarkerOptions>>()
+        whenever(interactorMock.getParking()).thenReturn(Single.just(expected))
+
+        tested.attach(viewMock)
+        tested.downloadParking()
+
+        verify(viewMock, times(0)).showParking(expected)
         verifyNoMoreInteractions(viewMock)
     }
 }

@@ -2,6 +2,7 @@ package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.domain
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import com.vo.vozilla.ktextensions.assertVehicleFiltersEquals
@@ -92,4 +93,40 @@ class VehicleMapInteractorImplTest {
     private fun filtersResponse() =
             FiltersResponse(Filters(mapOf(Pair("test1", "test"), Pair("test2", "test")),
                                     mapOf(Pair("test3", "test"), Pair("test4", "test"))))
+
+    @Test
+    fun shouldMapVehiclesResponseToMarkersFromModelFilter() {
+        val expected = listOf(VehicleDomainModel(mutableMapOf<String, Any>().apply {
+            put(Vehicle.ID, "1")
+            put(Vehicle.NAME, "test-vehicle")
+            put(Vehicle.PLATES_NUMBER, "222")
+            put(Vehicle.SIDE_NUMBER, "223")
+            put(Vehicle.STATUS, VehicleStatus.AVAILABLE.toString())
+            put(Vehicle.LOCATION_DESCRIPTION, "test-location")
+            put(Vehicle.PICTURE_ID, "2")
+        }, VehicleStatus.AVAILABLE, MarkerOptions().position(LatLng(1.0, 1.0))))
+        whenever(serviceMock.getVehiclesByModel(any())).thenReturn(Single.just(response()))
+
+        val testObserver = tested.getVehiclesByModel("test1").test()
+
+        assertVehicleListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
+    }
+
+    @Test
+    fun shouldMapVehiclesResponseToMarkersFromStatusFilter() {
+        val expected = listOf(VehicleDomainModel(mutableMapOf<String, Any>().apply {
+            put(Vehicle.ID, "1")
+            put(Vehicle.NAME, "test-vehicle")
+            put(Vehicle.PLATES_NUMBER, "222")
+            put(Vehicle.SIDE_NUMBER, "223")
+            put(Vehicle.STATUS, VehicleStatus.AVAILABLE.toString())
+            put(Vehicle.LOCATION_DESCRIPTION, "test-location")
+            put(Vehicle.PICTURE_ID, "2")
+        }, VehicleStatus.AVAILABLE, MarkerOptions().position(LatLng(1.0, 1.0))))
+        whenever(serviceMock.getVehiclesByStatus(any())).thenReturn(Single.just(response()))
+
+        val testObserver = tested.getVehiclesByStatus("test1").test()
+
+        assertVehicleListsEquals(testObserver.assertNoErrors().values().flatten(), expected)
+    }
 }

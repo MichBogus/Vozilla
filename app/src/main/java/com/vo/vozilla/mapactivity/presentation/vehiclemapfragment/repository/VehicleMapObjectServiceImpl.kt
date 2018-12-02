@@ -12,4 +12,10 @@ class VehicleMapObjectServiceImpl
     override fun getVehicles(): Single<VehiclesMapObjectResponse> =
             mapObjectsFeedApi.getVehicles()
 
+    override fun getVehiclesByModel(modelName: String): Single<VehiclesMapObjectResponse> =
+            mapObjectsFeedApi.getVehiclesByModel(modelName)
+
+    override fun getVehiclesByStatus(status: String): Single<VehiclesMapObjectResponse> =
+            mapObjectsFeedApi.getVehiclesByStatus(status)
+
 }

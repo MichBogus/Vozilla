@@ -17,8 +17,8 @@
                 android:id="@+id/menu_filter_by_model"
                 android:title="@string/filter_by_model"/>
             <item
-                android:id="@+id/menu_filter_by_type"
-                android:title="@string/filter_by_type"/>
+                android:id="@+id/menu_filter_by_status"
+                android:title="@string/filter_by_status"/>
         </menu>
     </item>
 </menu>

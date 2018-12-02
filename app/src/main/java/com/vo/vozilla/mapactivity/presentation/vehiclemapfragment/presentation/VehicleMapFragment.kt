@@ -16,10 +16,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.Marker
 import com.google.maps.android.ui.IconGenerator
 import com.vo.vozilla.R
+import com.vo.vozilla.dialog.SingleChoiceDialog
 import com.vo.vozilla.mapactivity.domain.VehicleDomainModel
 import com.vo.vozilla.mapactivity.presentation.MapActivity
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
-import com.vo.vozilla.mapactivity.presentation.vehicleinfodialog.VehicleInfoDialog
+import com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.presentation.vehicleinfodialog.VehicleInfoDialog
 import kotlinx.android.synthetic.main.fragment_vehicle_map.*
 import javax.inject.Inject
 
@@ -77,14 +78,25 @@ class VehicleMapFragment : Fragment(), VehicleMapFragmentMVP.View, OnMapReadyCal
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_no_filters -> presenter.downloadVehicles()
-            R.id.menu_filter_by_model -> presenter.downloadVehicles()
-            R.id.menu_filter_by_type -> presenter.downloadVehicles()
+            R.id.menu_filter_by_model ->
+                presenter.getVehicleModelFilters().apply {
+                    SingleChoiceDialog.create(this.keys.toTypedArray(), this.values.toTypedArray())
+                            .show(activity!!.supportFragmentManager, "FilterTag")
+                }
+            R.id.menu_filter_by_status ->
+                presenter.getVehicleStatusFilters().apply {
+                    SingleChoiceDialog.create(this.keys.toTypedArray(), this.values.toTypedArray())
+                            .show(activity!!.supportFragmentManager, "FilterTag")
+                }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun showVehicles(vehicleList: List<VehicleDomainModel>) {
+    override fun clearMap() {
         googleMap?.clear()
+    }
+
+    override fun showVehicles(vehicleList: List<VehicleDomainModel>) {
         googleMap?.let { map ->
             vehicleList.forEach {
                 val iconGenerator = IconGenerator(context).apply {

@@ -19,6 +19,12 @@ class MapObjectsFeed
     override fun getVehicles(): Single<VehiclesMapObjectResponse> =
             restAdapter().getVehicles()
 
+    override fun getVehiclesByModel(modelName: String): Single<VehiclesMapObjectResponse> =
+            restAdapter().getVehiclesByModel(model = modelName)
+
+    override fun getVehiclesByStatus(status: String): Single<VehiclesMapObjectResponse> =
+            restAdapter().getVehiclesByStatus(status = status)
+
     override fun getParking(): Single<ParkingMapObjectResponse> =
             restAdapter().getParking()
 }

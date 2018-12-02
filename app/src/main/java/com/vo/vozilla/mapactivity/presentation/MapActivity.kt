@@ -1,14 +1,15 @@
 package com.vo.vozilla.mapactivity.presentation
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.vo.vozilla.R
-import com.vo.vozilla.baseactivity.BaseActivity
+import com.vo.vozilla.application.VozillaApp
 import com.vo.vozilla.ktextensions.disableShiftMode
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MapActivity : BaseActivity() {
+class MapActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,5 +22,5 @@ class MapActivity : BaseActivity() {
     override fun onSupportNavigateUp() =
             findNavController(R.id.container).navigateUp()
 
-    fun getMapActivityComponent() = vozillaMainComponent().plusMapActivityComponent()
+    fun getMapActivityComponent() = (application as VozillaApp).mainComponent!!.plusMapActivityComponent()
 }

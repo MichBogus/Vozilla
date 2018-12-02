@@ -1,4 +1,4 @@
-package com.vo.vozilla.mapactivity.presentation.vehicleinfodialog
+package com.vo.vozilla.mapactivity.presentation.vehiclemapfragment.presentation.vehicleinfodialog
 
 import android.os.Bundle
 import android.support.v4.app.DialogFragment

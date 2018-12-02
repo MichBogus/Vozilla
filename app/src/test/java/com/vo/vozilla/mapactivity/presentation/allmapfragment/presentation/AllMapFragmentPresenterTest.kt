@@ -4,6 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.whenever
@@ -85,6 +86,24 @@ class AllMapFragmentPresenterTest {
         verify(viewMock).showParking(expected)
         verify(viewMock).showVehicles(vehicleExpected)
         verify(viewMock).showZones(zonesExpected)
+        verifyNoMoreInteractions(viewMock)
+    }
+
+    @Test
+    fun shouldNotShowAnyItemsWhenResponseHasEmptyLists() {
+        val expected = listOf<Pair<ParkingSpace, MarkerOptions>>()
+        whenever(interactorMock.getParking()).thenReturn(Single.just(expected))
+        val vehicleExpected = listOf<VehicleDomainModel>()
+        whenever(interactorMock.getVehicles()).thenReturn(Single.just(vehicleExpected))
+        val zonesExpected = listOf<PolygonOptions>()
+        whenever(interactorMock.getZones()).thenReturn(Single.just(zonesExpected))
+
+        tested.attach(viewMock)
+        tested.downloadFullMap()
+
+        verify(viewMock, times(0)).showParking(expected)
+        verify(viewMock, times(0)).showVehicles(vehicleExpected)
+        verify(viewMock, times(0)).showZones(zonesExpected)
         verifyNoMoreInteractions(viewMock)
     }
 }

@@ -8,5 +8,5 @@
     <string name="filter">Filter</string>
     <string name="no_filters">No filters</string>
     <string name="filter_by_model">Filter by model</string>
-    <string name="filter_by_type">Filter by type</string>
+    <string name="filter_by_status">Filter by status</string>
 </resources>

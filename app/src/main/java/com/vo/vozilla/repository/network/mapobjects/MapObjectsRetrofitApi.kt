@@ -20,5 +20,15 @@ interface MapObjectsRetrofitApi {
 
     @Headers("Content-Type: application/json")
     @GET("map")
+    fun getVehiclesByModel(@Query("objectType") objectType: String = "VEHICLE",
+                           @Query("vehicleModel") model: String): Single<VehiclesMapObjectResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("map")
+    fun getVehiclesByStatus(@Query("objectType") objectType: String = "VEHICLE",
+                            @Query("vehicleStatus") status: String): Single<VehiclesMapObjectResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("map")
     fun getParking(@Query("objectType") objectType: String = "PARKING"): Single<ParkingMapObjectResponse>
 }

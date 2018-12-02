@@ -15,4 +15,11 @@ class VehicleMapInteractorImpl
 
     override fun getFilters(): Single<VehicleFilters> =
             filtersService.getFilters().map { VehicleFilters(it.filters.vehicleStatus, it.filters.vehicleModels) }
+
+    override fun getVehiclesByModel(modelName: String): Single<List<VehicleDomainModel>> =
+            service.getVehiclesByModel(modelName).map { it.vehicles }.map { converter.convert(it) }
+
+    override fun getVehiclesByStatus(status: String): Single<List<VehicleDomainModel>> =
+            service.getVehiclesByStatus(status).map { it.vehicles }.map { converter.convert(it) }
+
 }

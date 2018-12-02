@@ -29,7 +29,9 @@ class ParkingMapFragmentPresenter
                 .observeOn(schedulerUI)
                 .subscribeOn(schedulerIO)
                 .subscribe({
-                    view?.showParking(it)
+                    if (it.isNotEmpty()) {
+                        view?.showParking(it)
+                    }
                            }, {})
                 .apply { compositeDisposable.add(this) }
     }

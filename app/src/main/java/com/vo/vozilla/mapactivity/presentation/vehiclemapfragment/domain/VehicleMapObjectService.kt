@@ -6,4 +6,8 @@ import io.reactivex.Single
 interface VehicleMapObjectService {
 
     fun getVehicles(): Single<VehiclesMapObjectResponse>
+
+    fun getVehiclesByModel(modelName: String): Single<VehiclesMapObjectResponse>
+
+    fun getVehiclesByStatus(status: String): Single<VehiclesMapObjectResponse>
 }

@@ -28,21 +28,27 @@ class AllMapFragmentPresenter
         interactor.getParking()
                 .observeOn(schedulerUI)
                 .map {
-                    view?.showParking(it)
+                    if (it.isNotEmpty()) {
+                        view?.showParking(it)
+                    }
                     it
                 }
                 .observeOn(schedulerIO)
                 .flatMap { interactor.getVehicles() }
                 .observeOn(schedulerUI)
                 .map {
-                    view?.showVehicles(it)
+                    if (it.isNotEmpty()) {
+                        view?.showVehicles(it)
+                    }
                     it
                 }
                 .observeOn(schedulerIO)
                 .flatMap { interactor.getZones() }
                 .observeOn(schedulerUI)
                 .map {
-                    view?.showZones(it)
+                    if (it.isNotEmpty()) {
+                        view?.showZones(it)
+                    }
                 }
                 .observeOn(schedulerUI)
                 .subscribeOn(schedulerIO)
