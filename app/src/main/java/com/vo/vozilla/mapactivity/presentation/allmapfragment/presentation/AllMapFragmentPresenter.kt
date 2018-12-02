@@ -39,7 +39,7 @@ class AllMapFragmentPresenter
                     it
                 }
                 .observeOn(schedulerIO)
-                .flatMap { interactor.getZonesAsPolygons() }
+                .flatMap { interactor.getZones() }
                 .observeOn(schedulerUI)
                 .map {
                     view?.showZones(it)

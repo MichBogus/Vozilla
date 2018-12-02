@@ -7,7 +7,7 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.whenever
 import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingMapInteractor
-import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
+import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import org.junit.Test

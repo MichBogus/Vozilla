@@ -4,6 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.vo.vozilla.R
 import com.vo.vozilla.ktextensions.assertParkingTwoMarkerOptionsListsEquals
+import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverterImpl
 import com.vo.vozilla.repository.network.mapobjects.models.Color
 import com.vo.vozilla.repository.network.mapobjects.models.Location

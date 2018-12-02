@@ -1,7 +1,7 @@
 package com.vo.vozilla.mapactivity.presentation.parkingmapfragment.presentation
 
 import com.google.android.gms.maps.model.MarkerOptions
-import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
+import com.vo.vozilla.mapactivity.domain.ParkingSpace
 
 interface ParkingMapFragmentMVP {
 

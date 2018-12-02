@@ -2,7 +2,7 @@ package com.vo.vozilla.ktextensions
 
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolygonOptions
-import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
+import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
 import org.assertj.core.api.Assertions.assertThat
 

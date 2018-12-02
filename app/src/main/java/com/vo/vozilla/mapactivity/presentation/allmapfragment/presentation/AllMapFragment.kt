@@ -16,7 +16,7 @@ import com.vo.vozilla.R
 import com.vo.vozilla.mapactivity.presentation.MapActivity
 import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverter
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
-import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
+import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
 import kotlinx.android.synthetic.main.fragment_all_map.*
 import javax.inject.Inject

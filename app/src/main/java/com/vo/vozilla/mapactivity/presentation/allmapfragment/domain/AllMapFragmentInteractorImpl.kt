@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.PolygonOptions
 import com.vo.vozilla.mapactivity.presentation.converters.ParkingToMarkerConverter
 import com.vo.vozilla.mapactivity.presentation.converters.VehicleToMarkerConverter
 import com.vo.vozilla.mapactivity.presentation.converters.ZoneToPolygonConverter
-import com.vo.vozilla.mapactivity.presentation.parkingmapfragment.domain.ParkingSpace
+import com.vo.vozilla.mapactivity.domain.ParkingSpace
 import com.vo.vozilla.repository.network.mapobjects.models.vehicle.VehicleStatus
 import io.reactivex.Single
 import javax.inject.Inject
@@ -22,6 +22,6 @@ class AllMapFragmentInteractorImpl
     override fun getVehicles(): Single<List<Pair<VehicleStatus, MarkerOptions>>> =
             service.getVehicles().map { it.vehicles }.map { vehicleConverter.convert(it) }
 
-    override fun getZonesAsPolygons(): Single<List<PolygonOptions>> =
+    override fun getZones(): Single<List<PolygonOptions>> =
             service.getZones().map { it.zones }.map { zoneConverter.convert(it) }
 }
