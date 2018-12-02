@@ -80,16 +80,26 @@ class VehicleMapFragment : Fragment(), VehicleMapFragmentMVP.View, OnMapReadyCal
             R.id.menu_no_filters -> presenter.downloadVehicles()
             R.id.menu_filter_by_model ->
                 presenter.getVehicleModelFilters().apply {
-                    SingleChoiceDialog.create(this.keys.toTypedArray(), this.values.toTypedArray())
-                            .show(activity!!.supportFragmentManager, "FilterTag")
+                    openVehicleModelDialog(this.keys, this.values)
                 }
             R.id.menu_filter_by_status ->
                 presenter.getVehicleStatusFilters().apply {
-                    SingleChoiceDialog.create(this.keys.toTypedArray(), this.values.toTypedArray())
-                            .show(activity!!.supportFragmentManager, "FilterTag")
+                    openVehicleStatusDialog(this.keys, this.values)
                 }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun openVehicleModelDialog(keys: Set<String>,
+                                       values: Collection<String>) {
+        SingleChoiceDialog.create(keys.toTypedArray(), values.toTypedArray())
+                .show(activity!!.supportFragmentManager, "FilterTag")
+    }
+
+    private fun openVehicleStatusDialog(keys: Set<String>,
+                                        values: Collection<String>) {
+        SingleChoiceDialog.create(keys.toTypedArray(), values.toTypedArray())
+                .show(activity!!.supportFragmentManager, "FilterTag")
     }
 
     override fun clearMap() {
