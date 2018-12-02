@@ -21,6 +21,8 @@ W aplikacji domyślnie zostały utworzone dwie wersje build variantów (debug, r
 - Glide
 - Joda time
 
+Użyty język do napisania tej apliakcji to Kotlin (99% kodu)
+
 # 4) Wygląd
 Sam wygląd aplikacji jest dość prosty, składa się on z jednego Activity posiadającego cztery fragmenty (Wszystkie obiekty, Parkingi, Pojazdy oraz Strefy). Na potrzeby szybkiego stworzenia aplikacji stworzyłem cztery mapy zamaist jednej ogólnej, ponieważ też biblioteka mapy od Googla była na samym początku troche niezrozumiała dla mnie.
 
