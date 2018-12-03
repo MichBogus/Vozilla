@@ -10,7 +10,7 @@ Największa ilość testów jednostkowych powinna się zawrzeć w obiektach Pres
 # 2) Architektura build variants
 W aplikacji domyślnie zostały utworzone dwie wersje build variantów (debug, release). Dodałem do nich NetworkModule oraz RestUrl, w taki sposób na wersji produkcyjnej nie będą zapisywane logi z OkHttp. Dodatkowo pomyślałem że w przyszłości ktoś mógłby chcieć zmienić adres url do naszego serwera, więc spokojnie zrobi to w pliku RestUrl.
 
-# 3) Biblioteki użyt do stworzenia aplikacji
+# 3) Biblioteki użyte do stworzenia aplikacji
 - Dagger2
 - BottomNavigation
 - OkHttp
